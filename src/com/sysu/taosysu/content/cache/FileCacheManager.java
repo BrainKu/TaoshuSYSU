@@ -2,7 +2,7 @@ package com.sysu.taosysu.content.cache;
 
 import android.graphics.Bitmap;
 
-public class FileCacheManager implements CacheManager<Bitmap> {
+public class FileCacheManager implements ICacheManager<Bitmap> {
 
 	@Override
 	public Bitmap get(String key) {

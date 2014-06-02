@@ -13,8 +13,8 @@ public class LoginActivity extends ActionBarActivity {
 
 		setContentView(R.layout.activity_launch);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		getSupportFragmentManager().beginTransaction().replace(
-				R.id.launch_container, new LaunchFragment()).commit();
-	}
+		getSupportFragmentManager().beginTransaction()
+				.replace(R.id.launch_container, new LaunchFragment()).commit();
+	} 
 
 }

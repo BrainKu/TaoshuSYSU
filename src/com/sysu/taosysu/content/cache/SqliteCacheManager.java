@@ -2,7 +2,7 @@ package com.sysu.taosysu.content.cache;
 
 import com.sysu.taosysu.model.BookInfo;
 
-public class SqliteCacheManager implements CacheManager<BookInfo> {
+public class SqliteCacheManager implements ICacheManager<BookInfo> {
 
 	@Override
 	public BookInfo get(String key) {
