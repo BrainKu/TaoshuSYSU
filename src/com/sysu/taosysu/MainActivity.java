@@ -1,6 +1,7 @@
 package com.sysu.taosysu;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -10,6 +11,10 @@ import android.view.MenuItem;
 
 import com.sysu.taosysu.ui.fragment.BookListFragment;
 import com.sysu.taosysu.ui.fragment.NavigationDrawerFragment;
+import com.sysu.taosysu.ui.fragment.NotificationFragment;
+import com.sysu.taosysu.ui.fragment.PublishBookFragment;
+import com.sysu.taosysu.ui.fragment.SearchFragment;
+import com.sysu.taosysu.ui.fragment.SettingsFragment;
 
 public class MainActivity extends ActionBarActivity implements
 		NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -22,6 +27,7 @@ public class MainActivity extends ActionBarActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+
 		FragmentManager fm = getSupportFragmentManager();
 		mNavigationDrawerFragment = (NavigationDrawerFragment) fm
 				.findFragmentById(R.id.navigation_drawer);
@@ -33,9 +39,32 @@ public class MainActivity extends ActionBarActivity implements
 
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
-		FragmentManager fragmentManager = getSupportFragmentManager();
-		fragmentManager.beginTransaction()
-				.replace(R.id.container, new BookListFragment()).commit();
+		Fragment mFragment = null;
+
+		switch (position) {
+		case NavigationDrawerFragment.POSITION_HOME:
+			mFragment = new BookListFragment();
+			break;
+		case NavigationDrawerFragment.POSITION_PUBLISH:
+			mFragment = new PublishBookFragment();
+			break;
+		case NavigationDrawerFragment.POSITION_NOTIFICATION:
+			mFragment = new NotificationFragment();
+			break;
+		case NavigationDrawerFragment.POSITION_SEARCH:
+			mFragment = new SearchFragment();
+			break;
+		case NavigationDrawerFragment.POSITION_SETTING:
+			mFragment = new SettingsFragment();
+			break;
+		default:
+			break;
+		}
+
+		FragmentManager fm = getSupportFragmentManager();
+		if (mFragment != null) {
+			fm.beginTransaction().replace(R.id.container, mFragment).commit();
+		}
 	}
 
 	public void restoreActionBar() {

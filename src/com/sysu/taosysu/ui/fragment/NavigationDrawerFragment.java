@@ -24,11 +24,11 @@ import com.sysu.taosysu.ui.adapter.DrawerAdapter;
 
 public class NavigationDrawerFragment extends Fragment {
 
-	public static int POSITION_HOME = 0;
-	public static int POSITION_PUBLISH = 1;
-	public static int POSITION_SEARCH = 2;
-	public static int POSITION_NOTIFICATION = 3;
-	public static int POSITION_SETTING = 4;
+	public static final int POSITION_HOME = 0;
+	public static final int POSITION_PUBLISH = 1;
+	public static final int POSITION_SEARCH = 2;
+	public static final int POSITION_NOTIFICATION = 3;
+	public static final int POSITION_SETTING = 4;
 
 	private NavigationDrawerCallbacks mCallbacks;
 
