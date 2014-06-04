@@ -25,16 +25,16 @@ public class BookListFragment extends Fragment {
 
 		mListView.setAdapter(new BookListAdapter(getActivity(),
 				getFragmentManager()));
-		
+
 		mListView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				
+
 			}
 		});
-		
+
 		return view;
 	}
 }

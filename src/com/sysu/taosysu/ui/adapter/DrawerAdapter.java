@@ -17,8 +17,8 @@ import com.sysu.taosysu.model.DrawerItem;
 
 public class DrawerAdapter extends BaseAdapter {
 
-	private static final int LIST_HEADER = 1;
-	private static final int LIST_NORMAL = 2;
+	private static final int LIST_HEADER = 0;
+	private static final int LIST_NORMAL = 1;
 
 	Context mContext;
 	List<DrawerItem> mDrawerList = new ArrayList<DrawerItem>();
@@ -57,7 +57,9 @@ public class DrawerAdapter extends BaseAdapter {
 
 	@Override
 	public Object getItem(int position) {
-		return mDrawerList.get(position);
+		if (position > 0)
+			return mDrawerList.get(position - 1);
+		return null;
 	}
 
 	@Override
@@ -100,13 +102,15 @@ public class DrawerAdapter extends BaseAdapter {
 	public int getItemViewType(int position) {
 		if (position == 0)
 			return LIST_HEADER;
-		else
+		else if (position > 0)
 			return LIST_NORMAL;
+		else
+			return -1;
 	}
 
 	@Override
 	public int getViewTypeCount() {
 		return 2;
 	}
-
+	
 }
