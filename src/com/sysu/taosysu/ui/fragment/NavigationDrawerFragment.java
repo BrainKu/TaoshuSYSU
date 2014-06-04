@@ -5,6 +5,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -22,28 +23,17 @@ import com.sysu.taosysu.R;
 import com.sysu.taosysu.ui.adapter.DrawerAdapter;
 
 public class NavigationDrawerFragment extends Fragment {
-	private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
-
 	private NavigationDrawerCallbacks mCallbacks;
 
 	private ActionBarDrawerToggle mDrawerToggle;
 
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerListView;
-	private View mFragmentContainerView;
 
-	private int mCurrentSelectedPosition = 0;
 	private boolean mFromSavedInstanceState;
 	private boolean mUserLearnedDrawer;
 
 	public NavigationDrawerFragment() {
-	}
-
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-
-		selectItem(mCurrentSelectedPosition);
 	}
 
 	@Override
@@ -66,47 +56,28 @@ public class NavigationDrawerFragment extends Fragment {
 					}
 				});
 		mDrawerListView.setAdapter(new DrawerAdapter(getActivity()));
-		// mDrawerListView.setAdapter(new ArrayAdapter<String>(
-		// getActionBar().getThemedContext(),
-		// android.R.layout.simple_list_item_1,
-		// android.R.id.text1,
-		// new String[]{
-		// getString(R.string.title_section1),
-		// getString(R.string.title_section2),
-		// getString(R.string.title_section3),
-		// }));
-		mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
+
 		return mDrawerListView;
 	}
 
 	public boolean isDrawerOpen() {
 		return mDrawerLayout != null
-				&& mDrawerLayout.isDrawerOpen(mFragmentContainerView);
+				&& mDrawerLayout.isDrawerOpen(mDrawerListView);
 	}
 
-	public void setUp(int fragmentId, DrawerLayout drawerLayout) {
-		mFragmentContainerView = getActivity().findViewById(fragmentId);
+	public void setUp(DrawerLayout drawerLayout) {
 		mDrawerLayout = drawerLayout;
 
-//		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
-//				GravityCompat.START);
+		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
+				GravityCompat.START);
 
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setHomeButtonEnabled(true);
 
-		mDrawerToggle = new ActionBarDrawerToggle(getActivity(), /* host Activity */
-		mDrawerLayout, /* DrawerLayout object */
-		R.drawable.ic_drawer, /* nav drawer image to replace 'Up' caret */
-		R.string.navigation_drawer_open, /*
-										 * "open drawer" description for
-										 * accessibility
-										 */
-		R.string.navigation_drawer_close /*
-										 * "close drawer" description for
-										 * accessibility
-										 */
-		) {
+		mDrawerToggle = new ActionBarDrawerToggle(getActivity(), mDrawerLayout,
+				R.drawable.ic_drawer, R.string.navigation_drawer_open,
+				R.string.navigation_drawer_close) {
 			@Override
 			public void onDrawerClosed(View drawerView) {
 				super.onDrawerClosed(drawerView);
@@ -135,7 +106,7 @@ public class NavigationDrawerFragment extends Fragment {
 		};
 
 		if (!mUserLearnedDrawer && !mFromSavedInstanceState) {
-			mDrawerLayout.openDrawer(mFragmentContainerView);
+			mDrawerLayout.openDrawer(mDrawerListView);
 		}
 
 		// Defer code dependent on restoration of previous instance state.
@@ -150,12 +121,11 @@ public class NavigationDrawerFragment extends Fragment {
 	}
 
 	private void selectItem(int position) {
-		mCurrentSelectedPosition = position;
 		if (mDrawerListView != null) {
 			mDrawerListView.setItemChecked(position, true);
 		}
 		if (mDrawerLayout != null) {
-			mDrawerLayout.closeDrawer(mFragmentContainerView);
+			mDrawerLayout.closeDrawer(mDrawerListView);
 		}
 		if (mCallbacks != null) {
 			mCallbacks.onNavigationDrawerItemSelected(position);

@@ -27,15 +27,14 @@ public class MainActivity extends ActionBarActivity implements
 				.findFragmentById(R.id.navigation_drawer);
 		mTitle = getTitle();
 
-		mNavigationDrawerFragment.setUp(R.id.navigation_drawer,
-				(DrawerLayout) findViewById(R.id.drawer_layout));
+		mNavigationDrawerFragment
+				.setUp((DrawerLayout) this.findViewById(R.id.drawer_layout));
 	}
 
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
 		FragmentManager fragmentManager = getSupportFragmentManager();
-		fragmentManager
-				.beginTransaction()
+		fragmentManager.beginTransaction()
 				.replace(R.id.container, new BookListFragment()).commit();
 	}
 
