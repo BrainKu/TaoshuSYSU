@@ -5,6 +5,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -22,7 +23,12 @@ import com.sysu.taosysu.R;
 import com.sysu.taosysu.ui.adapter.DrawerAdapter;
 
 public class NavigationDrawerFragment extends Fragment {
-	private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
+
+	public static final int POSITION_HOME = 0;
+	public static final int POSITION_PUBLISH = 1;
+	public static final int POSITION_SEARCH = 2;
+	public static final int POSITION_NOTIFICATION = 3;
+	public static final int POSITION_SETTING = 4;
 
 	private NavigationDrawerCallbacks mCallbacks;
 
@@ -66,15 +72,6 @@ public class NavigationDrawerFragment extends Fragment {
 					}
 				});
 		mDrawerListView.setAdapter(new DrawerAdapter(getActivity()));
-		// mDrawerListView.setAdapter(new ArrayAdapter<String>(
-		// getActionBar().getThemedContext(),
-		// android.R.layout.simple_list_item_1,
-		// android.R.id.text1,
-		// new String[]{
-		// getString(R.string.title_section1),
-		// getString(R.string.title_section2),
-		// getString(R.string.title_section3),
-		// }));
 		mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
 		return mDrawerListView;
 	}
@@ -88,25 +85,16 @@ public class NavigationDrawerFragment extends Fragment {
 		mFragmentContainerView = getActivity().findViewById(fragmentId);
 		mDrawerLayout = drawerLayout;
 
-//		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
-//				GravityCompat.START);
+		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
+				GravityCompat.START);
 
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setHomeButtonEnabled(true);
 
-		mDrawerToggle = new ActionBarDrawerToggle(getActivity(), /* host Activity */
-		mDrawerLayout, /* DrawerLayout object */
-		R.drawable.ic_drawer, /* nav drawer image to replace 'Up' caret */
-		R.string.navigation_drawer_open, /*
-										 * "open drawer" description for
-										 * accessibility
-										 */
-		R.string.navigation_drawer_close /*
-										 * "close drawer" description for
-										 * accessibility
-										 */
-		) {
+		mDrawerToggle = new ActionBarDrawerToggle(getActivity(), mDrawerLayout,
+				R.drawable.ic_drawer, R.string.navigation_drawer_open,
+				R.string.navigation_drawer_close) {
 			@Override
 			public void onDrawerClosed(View drawerView) {
 				super.onDrawerClosed(drawerView);
