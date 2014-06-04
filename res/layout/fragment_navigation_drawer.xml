@@ -1,6 +1,8 @@
 <ListView xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/drawer_container"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:background="#cccc"
-	android:choiceMode="singleChoice" />
+	android:choiceMode="singleChoice"
+	tools:listheader="@layout/drawer_header"
+	tools:listitem="@layout/listitem_drawer" />

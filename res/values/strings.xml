@@ -30,4 +30,25 @@
 	<string name="default_book_introduce">一本很好玩的书来着，想要换一本另外一本好玩的书</string>
 	<string name="default_long_book_introduce">一本介绍很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长的书来着</string>
 
+	<string-array name="nav_drawer_items">
+		<item>首页</item>
+		<item>发布</item>
+		<item>搜索</item>
+		<item>提醒</item>
+		<item>设置</item>
+	</string-array>
+
+	<array name="nav_drawer_icons">
+		<item>@drawable/ic_drawer_home</item>
+		<item>@drawable/ic_drawer_new</item>
+		<item>@drawable/ic_drawer_search</item>
+		<item>@drawable/ic_drawer_bell</item>
+		<item>@drawable/ic_drawer_settings</item>
+	</array>
+
+	<string name="default_user_name">Kuxinwei</string>
+	<string name="default_user_join_time">2014.4.2</string>
+	<string name="drawer_icon">drawer_icon</string>
+	<string name="default_drawer_text">默认</string>
+
 </resources>

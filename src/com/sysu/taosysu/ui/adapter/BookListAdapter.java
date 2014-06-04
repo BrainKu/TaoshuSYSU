@@ -1,5 +1,6 @@
 package com.sysu.taosysu.ui.adapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
@@ -22,6 +23,11 @@ public class BookListAdapter extends BaseAdapter {
 	public BookListAdapter(Context context, FragmentManager fm) {
 		this.mContext = context;
 		this.fm = fm;
+		init();
+	}
+
+	private void init() {
+		mData = new ArrayList<BookInfo>();
 	}
 
 	@Override
@@ -46,7 +52,7 @@ public class BookListAdapter extends BaseAdapter {
 			convertView = LayoutInflater.from(mContext).inflate(resouces, null);
 		}
 
-		return null;
+		return convertView;
 	}
 
 }

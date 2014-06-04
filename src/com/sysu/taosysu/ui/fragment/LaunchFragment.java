@@ -29,7 +29,7 @@ public class LaunchFragment extends Fragment {
 			public void onClick(View v) {
 				getFragmentManager().beginTransaction()
 						.replace(R.id.launch_container, new LoginFragment())
-						.commit();
+						.addToBackStack("").commit();
 			}
 		});
 
