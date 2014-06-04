@@ -20,6 +20,7 @@
 		android:layout_gravity="center_vertical"
 		android:layout_marginLeft="20dp"
 		android:text="@string/default_drawer_text"
-		android:textAppearance="?android:attr/textAppearanceMedium" />
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:textColor="@color/black" />
 
 </LinearLayout>
