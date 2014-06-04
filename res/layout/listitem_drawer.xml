@@ -8,15 +8,16 @@
 
 	<ImageView
 		android:id="@+id/drawer_icon"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:background="@drawable/ic_drawer_home"
-		android:contentDescription="@string/drawer_icon" />
+		android:layout_width="25dp"
+		android:layout_height="25dp"
+		android:contentDescription="@string/drawer_icon"
+		android:src="@drawable/ic_drawer_home" />
 
 	<TextView
 		android:id="@+id/drawer_text"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
+		android:layout_gravity="center_vertical"
 		android:layout_marginLeft="20dp"
 		android:text="@string/default_drawer_text"
 		android:textAppearance="?android:attr/textAppearanceMedium" />
