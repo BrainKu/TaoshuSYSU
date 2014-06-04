@@ -3,9 +3,6 @@ package com.sysu.taosysu.ui.adapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sysu.taosysu.R;
-import com.sysu.taosysu.model.DrawerItem;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.view.LayoutInflater;
@@ -15,12 +12,22 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.sysu.taosysu.R;
+import com.sysu.taosysu.model.DrawerItem;
+
 public class DrawerAdapter extends BaseAdapter {
+
+	private static final int LIST_HEADER = 0;
+	private static final int LIST_NORMAL = 1;
 
 	Context mContext;
 	List<DrawerItem> mDrawerList = new ArrayList<DrawerItem>();
-	ImageView icon;
-	TextView text;
+	ImageView drawerIcon;
+	TextView drawerText;
+
+	TextView username;
+	TextView createTime;
+
 	String[] navMenuTitles;
 	TypedArray navMenuIcons;
 
@@ -45,12 +52,14 @@ public class DrawerAdapter extends BaseAdapter {
 
 	@Override
 	public int getCount() {
-		return mDrawerList.size();
+		return mDrawerList.size() + 1;
 	}
 
 	@Override
 	public Object getItem(int position) {
-		return mDrawerList.get(position);
+		if (position > 0)
+			return mDrawerList.get(position - 1);
+		return null;
 	}
 
 	@Override
@@ -60,17 +69,48 @@ public class DrawerAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		if (convertView == null) {
-			convertView = LayoutInflater.from(mContext).inflate(
-					R.layout.listitem_drawer, null);
-		}
-		text = (TextView) convertView.findViewById(R.id.drawer_text);
-		icon = (ImageView) convertView.findViewById(R.id.drawer_icon);
+		LayoutInflater inflater = LayoutInflater.from(mContext);
 
-		text.setText(mDrawerList.get(position).getTitle());
-		icon.setImageResource(mDrawerList.get(position).getIcon());
+		if (getItemViewType(position) == LIST_HEADER) {
+			if (convertView == null)
+				convertView = inflater.inflate(R.layout.drawer_header, parent,
+						false);
+			username = (TextView) convertView.findViewById(R.id.user_name);
+			createTime = (TextView) convertView
+					.findViewById(R.id.user_join_time);
+			username.setText("¿àÐÁÎ¶");
+			createTime.setText("2014.1.1");
+		}
+		if (getItemViewType(position) == LIST_NORMAL) {
+			if (convertView == null)
+				convertView = inflater.inflate(R.layout.listitem_drawer,
+						parent, false);
+
+			drawerText = (TextView) convertView.findViewById(R.id.drawer_text);
+			drawerIcon = (ImageView) convertView.findViewById(R.id.drawer_icon);
+
+			drawerText.setText(mDrawerList.get(position - 1).getTitle());
+			drawerIcon
+					.setImageResource(mDrawerList.get(position - 1).getIcon());
+
+		}
 
 		return convertView;
 	}
 
+	@Override
+	public int getItemViewType(int position) {
+		if (position == 0)
+			return LIST_HEADER;
+		else if (position > 0)
+			return LIST_NORMAL;
+		else
+			return -1;
+	}
+
+	@Override
+	public int getViewTypeCount() {
+		return 2;
+	}
+	
 }

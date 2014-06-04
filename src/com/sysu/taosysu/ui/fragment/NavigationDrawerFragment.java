@@ -23,17 +23,34 @@ import com.sysu.taosysu.R;
 import com.sysu.taosysu.ui.adapter.DrawerAdapter;
 
 public class NavigationDrawerFragment extends Fragment {
+
+	public static final int POSITION_PERSONAL_INFO = 0;
+	public static final int POSITION_HOME = 1;
+	public static final int POSITION_PUBLISH = 2;
+	public static final int POSITION_SEARCH = 3;
+	public static final int POSITION_NOTIFICATION = 4;
+	public static final int POSITION_SETTING = 5;
+
 	private NavigationDrawerCallbacks mCallbacks;
 
 	private ActionBarDrawerToggle mDrawerToggle;
 
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerListView;
+	private View mFragmentContainerView;
 
+	private int mCurrentSelectedPosition = 0;
 	private boolean mFromSavedInstanceState;
 	private boolean mUserLearnedDrawer;
 
 	public NavigationDrawerFragment() {
+	}
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		selectItem(mCurrentSelectedPosition);
 	}
 
 	@Override
@@ -47,6 +64,9 @@ public class NavigationDrawerFragment extends Fragment {
 			Bundle savedInstanceState) {
 		mDrawerListView = (ListView) inflater.inflate(
 				R.layout.fragment_navigation_drawer, container, false);
+
+		mDrawerListView.setAdapter(new DrawerAdapter(getActivity()));
+
 		mDrawerListView
 				.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 					@Override
@@ -55,17 +75,16 @@ public class NavigationDrawerFragment extends Fragment {
 						selectItem(position);
 					}
 				});
-		mDrawerListView.setAdapter(new DrawerAdapter(getActivity()));
-
 		return mDrawerListView;
 	}
 
 	public boolean isDrawerOpen() {
 		return mDrawerLayout != null
-				&& mDrawerLayout.isDrawerOpen(mDrawerListView);
+				&& mDrawerLayout.isDrawerOpen(mFragmentContainerView);
 	}
 
-	public void setUp(DrawerLayout drawerLayout) {
+	public void setUp(int fragmentId, DrawerLayout drawerLayout) {
+		mFragmentContainerView = getActivity().findViewById(fragmentId);
 		mDrawerLayout = drawerLayout;
 
 		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
@@ -106,7 +125,7 @@ public class NavigationDrawerFragment extends Fragment {
 		};
 
 		if (!mUserLearnedDrawer && !mFromSavedInstanceState) {
-			mDrawerLayout.openDrawer(mDrawerListView);
+			mDrawerLayout.openDrawer(mFragmentContainerView);
 		}
 
 		// Defer code dependent on restoration of previous instance state.
@@ -121,11 +140,12 @@ public class NavigationDrawerFragment extends Fragment {
 	}
 
 	private void selectItem(int position) {
+		mCurrentSelectedPosition = position;
 		if (mDrawerListView != null) {
 			mDrawerListView.setItemChecked(position, true);
 		}
 		if (mDrawerLayout != null) {
-			mDrawerLayout.closeDrawer(mDrawerListView);
+			mDrawerLayout.closeDrawer(mFragmentContainerView);
 		}
 		if (mCallbacks != null) {
 			mCallbacks.onNavigationDrawerItemSelected(position);

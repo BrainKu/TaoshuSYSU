@@ -9,15 +9,11 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent" />
 
-	<ListView
-		android:id="@+id/drawer_container"
-		android:background="@color/white"
+	<fragment
+		android:id="@+id/navigation_drawer"
+		android:name="com.sysu.taosysu.ui.fragment.NavigationDrawerFragment"
 		android:layout_width="@dimen/navigation_drawer_width"
 		android:layout_height="match_parent"
-		android:choiceMode="singleChoice"
-		android:layout_gravity="start"
-		android:dividerHeight="1dp"
-		tools:listheader="@layout/drawer_header"
-		tools:listitem="@layout/listitem_drawer" />
+		android:layout_gravity="start" />
 
 </android.support.v4.widget.DrawerLayout>
