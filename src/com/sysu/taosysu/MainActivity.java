@@ -22,8 +22,8 @@ public class MainActivity extends ActionBarActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
-		mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager()
+		FragmentManager fm = getSupportFragmentManager();
+		mNavigationDrawerFragment = (NavigationDrawerFragment) fm
 				.findFragmentById(R.id.navigation_drawer);
 		mTitle = getTitle();
 
@@ -34,8 +34,7 @@ public class MainActivity extends ActionBarActivity implements
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
 		FragmentManager fragmentManager = getSupportFragmentManager();
-		fragmentManager
-				.beginTransaction()
+		fragmentManager.beginTransaction()
 				.replace(R.id.container, new BookListFragment()).commit();
 	}
 

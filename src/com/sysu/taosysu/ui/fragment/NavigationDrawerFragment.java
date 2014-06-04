@@ -22,7 +22,6 @@ import com.sysu.taosysu.R;
 import com.sysu.taosysu.ui.adapter.DrawerAdapter;
 
 public class NavigationDrawerFragment extends Fragment {
-	private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
 
 	private NavigationDrawerCallbacks mCallbacks;
 
@@ -88,25 +87,16 @@ public class NavigationDrawerFragment extends Fragment {
 		mFragmentContainerView = getActivity().findViewById(fragmentId);
 		mDrawerLayout = drawerLayout;
 
-//		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
-//				GravityCompat.START);
+		// mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
+		// GravityCompat.START);
 
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setHomeButtonEnabled(true);
 
-		mDrawerToggle = new ActionBarDrawerToggle(getActivity(), /* host Activity */
-		mDrawerLayout, /* DrawerLayout object */
-		R.drawable.ic_drawer, /* nav drawer image to replace 'Up' caret */
-		R.string.navigation_drawer_open, /*
-										 * "open drawer" description for
-										 * accessibility
-										 */
-		R.string.navigation_drawer_close /*
-										 * "close drawer" description for
-										 * accessibility
-										 */
-		) {
+		mDrawerToggle = new ActionBarDrawerToggle(getActivity(), mDrawerLayout,
+				R.drawable.ic_drawer, R.string.navigation_drawer_open,
+				R.string.navigation_drawer_close) {
 			@Override
 			public void onDrawerClosed(View drawerView) {
 				super.onDrawerClosed(drawerView);
