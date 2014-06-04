@@ -36,6 +36,7 @@
 		<item>搜索</item>
 		<item>提醒</item>
 		<item>设置</item>
+		<item>退出</item>
 	</string-array>
 
 	<array name="nav_drawer_icons">
@@ -44,6 +45,7 @@
 		<item>@drawable/ic_drawer_search</item>
 		<item>@drawable/ic_drawer_bell</item>
 		<item>@drawable/ic_drawer_settings</item>
+		<item>@drawable/ic_drawer_logout</item>
 	</array>
 
 	<string-array name="search_condition">
@@ -56,5 +58,12 @@
 	<string name="drawer_icon">drawer_icon</string>
 	<string name="default_drawer_text">默认</string>
 	<string name="text_or_lable">书名或者标签</string>
+	<string name="upload">上传</string>
+	<string name="confirm">确认</string>
+	<string name="upload_photo">上传照片</string>
+	<string name="add_label">添加标签</string>
+	<string name="add_introduce">添加描述</string>
+	<string name="add_label_hint">添加标签，以逗号隔开</string>
+	<string name="add_introduce_hint">添加书籍描述</string>
 
 </resources>
