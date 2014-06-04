@@ -863,11 +863,13 @@ containing a value of this type.
         public static final int abc_split_action_bar_is_narrow=0x7f060002;
     }
     public static final class color {
-        public static final int abc_search_url_text_holo=0x7f070005;
+        public static final int abc_search_url_text_holo=0x7f070007;
         public static final int abc_search_url_text_normal=0x7f070000;
         public static final int abc_search_url_text_pressed=0x7f070002;
         public static final int abc_search_url_text_selected=0x7f070001;
         public static final int black=0x7f070003;
+        public static final int deep_green=0x7f070005;
+        public static final int default_green=0x7f070006;
         public static final int white=0x7f070004;
     }
     public static final class dimen {
@@ -954,8 +956,7 @@ containing a value of this type.
  Minimum width of the search view text entry area. 
          */
         public static final int abc_search_view_text_min_width=0x7f08000c;
-        /**  Default screen margins, per the Android Design guidelines. 
-
+        /** 
          Example customization of dimensions originally defined in res/values/dimens.xml
          (such as screen margins) for screens with more than 820dp of available width. This
          would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
@@ -963,6 +964,10 @@ containing a value of this type.
          */
         public static final int activity_horizontal_margin=0x7f080015;
         public static final int activity_vertical_margin=0x7f080016;
+        public static final int button_padding=0x7f080018;
+        public static final int button_padding_large=0x7f08001a;
+        public static final int button_padding_small=0x7f080019;
+        public static final int default_button_size=0x7f08001b;
         /**  The platform's desired fixed height for a dialog along the major axis
          (the screen is in portrait). This may be either a fraction or a dimension.
  The platform's desired fixed height for a dialog along the major axis
@@ -995,11 +1000,6 @@ containing a value of this type.
          (the screen is in portrait). This may be either a fraction or a dimension.
          */
         public static final int dialog_fixed_width_minor=0x7f080012;
-        /** 
-         Per the design guidelines, navigation drawers should be between 240dp and 320dp:
-         https://developer.android.com/design/patterns/navigation-drawer.html
-	
-         */
         public static final int navigation_drawer_width=0x7f080017;
     }
     public static final class drawable {
@@ -1090,15 +1090,18 @@ containing a value of this type.
         public static final int abc_textfield_searchview_holo_light=0x7f020054;
         public static final int abc_textfield_searchview_right_holo_dark=0x7f020055;
         public static final int abc_textfield_searchview_right_holo_light=0x7f020056;
-        public static final int drawer_shadow=0x7f020057;
-        public static final int ic_action_send_now=0x7f020058;
-        public static final int ic_drawer=0x7f020059;
-        public static final int ic_drawer_bell=0x7f02005a;
-        public static final int ic_drawer_home=0x7f02005b;
-        public static final int ic_drawer_new=0x7f02005c;
-        public static final int ic_drawer_search=0x7f02005d;
-        public static final int ic_drawer_settings=0x7f02005e;
-        public static final int ic_launcher=0x7f02005f;
+        public static final int btn_default=0x7f020057;
+        public static final int btn_pressed=0x7f020058;
+        public static final int drawer_shadow=0x7f020059;
+        public static final int green_btn_selector=0x7f02005a;
+        public static final int ic_action_send_now=0x7f02005b;
+        public static final int ic_drawer=0x7f02005c;
+        public static final int ic_drawer_bell=0x7f02005d;
+        public static final int ic_drawer_home=0x7f02005e;
+        public static final int ic_drawer_new=0x7f02005f;
+        public static final int ic_drawer_search=0x7f020060;
+        public static final int ic_drawer_settings=0x7f020061;
+        public static final int ic_launcher=0x7f020062;
     }
     public static final class id {
         public static final int account_input=0x7f05005b;
@@ -1605,6 +1608,7 @@ containing a value of this type.
         public static final int Widget_AppCompat_ProgressBar=0x7f0b000a;
         public static final int Widget_AppCompat_ProgressBar_Horizontal=0x7f0b0009;
         public static final int Widget_AppCompat_Spinner_DropDown_ActionBar=0x7f0b0022;
+        public static final int green_button=0x7f0b008e;
     }
     public static final class styleable {
         /**  ============================================ 
