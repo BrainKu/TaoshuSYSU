@@ -969,6 +969,7 @@ containing a value of this type.
         public static final int button_padding=0x7f080018;
         public static final int button_padding_large=0x7f08001a;
         public static final int button_padding_small=0x7f080019;
+        public static final int default_action_height=0x7f08001c;
         public static final int default_button_size=0x7f08001b;
         /**  The platform's desired fixed height for a dialog along the major axis
          (the screen is in portrait). This may be either a fraction or a dimension.
@@ -1289,9 +1290,10 @@ containing a value of this type.
         public static final int fragment_navigation_drawer=0x7f030023;
         public static final int fragment_publishbook=0x7f030024;
         public static final int fragment_register=0x7f030025;
-        public static final int listitem_bookinfo=0x7f030026;
-        public static final int listitem_drawer=0x7f030027;
-        public static final int support_simple_spinner_dropdown_item=0x7f030028;
+        public static final int fragment_search=0x7f030026;
+        public static final int listitem_bookinfo=0x7f030027;
+        public static final int listitem_drawer=0x7f030028;
+        public static final int support_simple_spinner_dropdown_item=0x7f030029;
     }
     public static final class menu {
         public static final int global=0x7f0d0000;

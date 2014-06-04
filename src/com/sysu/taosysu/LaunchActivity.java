@@ -5,7 +5,7 @@ import android.support.v7.app.ActionBarActivity;
 
 import com.sysu.taosysu.ui.fragment.LaunchFragment;
 
-public class LoginActivity extends ActionBarActivity {
+public class LaunchActivity extends ActionBarActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

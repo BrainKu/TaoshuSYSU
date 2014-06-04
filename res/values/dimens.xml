@@ -7,5 +7,6 @@
 	<dimen name="button_padding_small">1dp</dimen>
 	<dimen name="button_padding_large">5dp</dimen>
 	<dimen name="default_button_size">18sp</dimen>
+	<dimen name="default_action_height">45dp</dimen>
 
 </resources>
